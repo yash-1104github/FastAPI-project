@@ -28,7 +28,8 @@ npm run dev
 1. **Backend**
 - Built with FastAPI for async performance and native WebSocket support
 - Code execution is handled using Judge0 API for secure compilation
-- A WebSocket Room Manager maintains multiple connections per room and broadcasts code/output updates
+- A WebSocket Room Manager maintains multiple connections per room and broadcasts code/output 
+
 
 2. **Frontend**
 - Built using React + TypeScript for clean scaling and type safety
@@ -45,3 +46,7 @@ npm run dev
 ## Any limitations
 - Autocomplete works via API but it's not inline ghost-text like Copilot
 - Rooms are public — no authentication or access control yet
+
+## Demo
+<img width="1694" height="956" alt="Screenshot 2025-12-01 at 4 23 47 PM" src="https://github.com/user-attachments/assets/c9154aa9-8ffb-40ca-8086-2cb691aaf62d" />
+<img width="1675" height="941" alt="Screenshot 2025-12-01 at 3 09 30 PM" src="https://github.com/user-attachments/assets/7a40ea46-2329-4a0a-8bb5-6850cc41f6fb" />
