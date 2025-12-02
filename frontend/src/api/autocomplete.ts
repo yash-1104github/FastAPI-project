@@ -1,6 +1,8 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 export async function fetchAutocomplete(code: string, cursorPosition: number, language='python'){
   try{
-    const res = await fetch('/autocomplete', {
+    const res = await fetch(`${API_URL}/autocomplete`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ code, cursorPosition, language })

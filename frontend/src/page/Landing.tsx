@@ -9,8 +9,10 @@ export default function Landing() {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   async function createRoom() {
-    const res = await fetch("/rooms", {
+    const res = await fetch(`${API_URL}/rooms`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     });

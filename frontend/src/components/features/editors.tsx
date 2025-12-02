@@ -75,9 +75,12 @@ export function Editor({ roomId }: { roomId: string }) {
     );
   }
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
+
   const runHandler = async () => {
     setLoading(true);
-    await fetch("/run", {
+    await fetch(`${API_URL}/run`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
