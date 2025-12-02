@@ -8,25 +8,6 @@ export default defineConfig({
     port: 3000,
     host: true,
     strictPort: true,
-    proxy: {
-      "/rooms": {
-        target: "https://fastapi-project-78pm.onrender.com",
-        changeOrigin: true,
-      },
-      "/run": {
-        target: "https://fastapi-project-78pm.onrender.com",
-        changeOrigin: true,
-      },
-      "/ws": {
-        target: "wss://fastapi-project-78pm.onrender.com",
-        ws: true,
-        changeOrigin: true,
-      },
-      "/autocomplete": {
-        target: "https://fastapi-project-78pm.onrender.com",
-        changeOrigin: true,
-      },
-    },
   },
   resolve: {
     alias: {

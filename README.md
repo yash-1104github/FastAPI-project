@@ -8,19 +8,31 @@ psql -U postgres -d pairprog_db
 2. **Backend:**
 
 ```bash
-cd code_buddy/backend
+mkdir FastAPI-project/backend
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
+Create env file inside backend folder 
+```bash
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/pairprog_db"
+RAPID_API_KEY="005d9ffa4bmsh4d534f6fa2e852bp1238b5jsn444c38d5b2c5"
+FRONTEND_URL="http://localhost:3000"
+```
+
 3. **Frontend:**
 
 ```bash
-cd code_buddy/frontend
+cd FastAPI-project/frontend
 npm install
 npm run dev
+```
+
+Create env file inside frontend folder 
+```bash
+VITE_API_URL="http://localhost:8000"
 ```
 
 ## Technology & Design Choices
