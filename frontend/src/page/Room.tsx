@@ -25,7 +25,7 @@ export default function Room() {
   return (
      <div className="min-h-screen w-full bg-black text-white flex flex-col">
 
-      <div className="fixed top-0 w-full bg-gradient-to-r from-purple-900/40 via-black to-purple-900/40 backdrop-blur-lg border-b border-gray-800 px-12 py-4 flex items-center justify-between">
+      <div className="fixed z-50 top-0 w-full bg-gradient-to-r from-purple-900/40 via-black to-purple-900/40 backdrop-blur-lg border-b border-gray-800 px-5 md:px-12 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center">
             <Code2 className="w-5 h-5 text-white" />
@@ -52,6 +52,7 @@ export default function Room() {
       <div className="py-6 mt-10 border-t border-gray-800 w-full text-center text-gray-600">
         Coding live with your buddy 
       </div>
+
     </div>
   );
 }

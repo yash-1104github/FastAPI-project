@@ -21,10 +21,9 @@ export function Editor({ roomId }: { roomId: string }) {
 
   useEffect(() => {
     const socket = new WebSocket(
-      `${
-        window.location.protocol === "https:" ? "wss" : "ws"
-      }://localhost:8000/ws/${roomId}`
+      `wss://fastapi-project-78pm.onrender.com/ws/${roomId}`
     );
+
     socket.onopen = () => console.log("ws open");
     socket.onmessage = (evt) => {
       const payload = JSON.parse(evt.data);
@@ -68,6 +67,7 @@ export function Editor({ roomId }: { roomId: string }) {
         .reduce((a, b) => a + String.fromCharCode(b), "")
     );
   }
+
   function fromBase64(b64: string) {
     if (!b64) return "";
     return new TextDecoder().decode(
@@ -119,9 +119,10 @@ export function Editor({ roomId }: { roomId: string }) {
   }
 
   return (
-    <div className="flex justify-center w-full">
-      <div className="w-[100%] h-[85vh] px-12 mt-24 grid grid-cols-10 gap-4">
-        <Card className="col-span-7 p-6 bg-black/30 border border-purple-600/50 rounded-2xl shadow-[0_0_15px_rgba(147,51,234,0.2)] relative">
+    <div className="flex justify-center w-full ">
+      <div
+        className="w-full min-h-screen px-4 sm:px-8 md:px-12 mt-24 grid grid-cols-1 md:grid-cols-8 lg:grid-cols-10 gap-4">
+        <Card className="md:col-span-5 lg:col-span-7 col-span-full p-6 bg-black/30 border border-purple-600/50 rounded-2xl shadow-[0_0_15px_rgba(147,51,234,0.2)] relative" >
           <h3 className="text-xl font-bold mb-4 text-purple-400 flex items-center gap-2">
             <Code2 className="w-5 h-5" /> Code Editor
           </h3>
@@ -137,20 +138,14 @@ export function Editor({ roomId }: { roomId: string }) {
           <textarea
             value={code}
             onChange={(e) => dispatch(setCode(e.target.value))}
-            className="
-              w-full h-[95%] p-6 rounded-xl
-              bg-[#0A0A0A] text-[#EDEDED]
-              font-mono text-sm leading-[1.6]
-              border border-gray-700
-              focus:outline-none focus:ring-2
-              resize-none
-            "
+            className="w-full h-[70vh] md:h-[78vh] lg:h-[80vh] p-6 rounded-xl bg-[#0A0A0A] text-[#EDEDED] font-mono text-sm leading-[1.6] border border-gray-700 focus:outline-none focus:ring-2 resize-none"
             placeholder="Write your code..."
           />
         </Card>
 
-        <div className="col-span-3 col-start-8 col-end-11 grid grid-rows-2 gap-4 h-full">
-          <Card className="p-6 bg-black/30 border border-pink-600/50 rounded-2xl shadow-[0_0_12px_rgba(236,72,153,0.2)] relative">
+        <div className=" md:col-span-3 lg:col-span-3   grid grid-rows-2 gap-4 col-span-full h-full">
+
+          <Card className=" p-6 bg-black/30 border border-pink-600/50  rounded-2xl shadow-[0_0_12px_rgba(236,72,153,0.2)] relative">
             <h3 className="text-lg font-bold mb-3 text-pink-400 flex items-center gap-2">
               <Zap className="w-4" /> Output
             </h3>
@@ -163,26 +158,27 @@ export function Editor({ roomId }: { roomId: string }) {
               <Play className="w-4" /> {loading ? "Running..." : "Run"}
             </Button>
 
-            <div className="w-full h-[88%] bg-black/70 border border-gray-800 rounded-xl p-3 overflow-auto">
+            <div
+              className="w-full h-[28vh] md:h-[33vh] lg:h-[35vh] bg-black/70 border border-gray-800 rounded-xl p-3 overflow-auto">
               <pre className="text-xs font-mono whitespace-pre-wrap text-gray-300">
                 {output || "No output yet..."}
               </pre>
             </div>
           </Card>
 
-          <Card className="p-6 bg-black/30 border border-purple-500/30 rounded-2xl  relative">
+          <Card className="p-6 bg-black/30 border border-purple-500/30 rounded-2xl shadow relative">
             <h3 className="text-lg font-bold mb-3 text-purple-300 flex items-center gap-2">
               <Sparkles className="w-4" /> AI Suggestions ✨
             </h3>
 
-              <Button
-                onClick={() => navigator.clipboard.writeText(suggestion)}
-                className="absolute top-6 rounded-lg right-6 bg-purple-700/70 hover:opacity-80 flex items-center gap-2 text-xs"
-              >
-                <Copy className="w-3" /> Copy
-              </Button>
+            <Button
+              onClick={() => navigator.clipboard.writeText(suggestion)}
+              className="absolute top-6 right-6 bg-purple-700/70 hover:opacity-80 flex items-center gap-2 text-xs">
+              <Copy className="w-3" /> Copy
+            </Button>
 
-            <div className="w-full h-[85%] bg-black/70 border border-gray-800 rounded-xl p-3  overflow-auto cursor-pointer">
+            <div
+              className="w-full h-[30vh] md:h-[34vh] lg:h-[35vh] bg-black/70 border border-gray-800 rounded-xl p-3 overflow-auto cursor-pointer">
               <pre className="text-sm p-2 font-mono whitespace-pre-wrap text-gray-400">
                 {suggestion || "Waiting for AI..."}
               </pre>
