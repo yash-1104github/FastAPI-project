@@ -8,7 +8,7 @@ psql -U postgres -d pairprog_db
 2. **Backend:**
 
 ```bash
-mkdir FastAPI-project/backend
+cd FastAPI-project/backend
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
